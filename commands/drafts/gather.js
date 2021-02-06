@@ -2,14 +2,20 @@ const axios = require("axios");
 const qs = require("qs");
 
 module.exports = {
-	name: "Log",
-	description: "Share work you did for the community",
+	name: "gather",
+	description: "WIP",
 	options: [
 		{
-			name: "Post",
+			name: "title",
 			description: "Sends this post to tiny Garden's Public page",
 			type: 3,
 			required: true,
+		},
+    	{
+			name: "music",
+			description: "Sends this post to tiny Garden's Public page",
+			type: 3,
+			required: false,
 		},
 	],
 	async execute(_bot, say, interaction, args) {

@@ -1,3 +1,4 @@
+const { MessageEmbed } = require("discord.js");
 const axios = require("axios");
 const qs = require("qs");
 
@@ -13,11 +14,9 @@ module.exports = {
 		},
 	],
 	async execute(_bot, say, interaction, args) {
-		// console.info(interaction.member.user.id);
-		// console.info(interaction.channel_id);
 
-		args.push(interaction.member.user.id);
-		args.push(interaction.channel_id);
+		args.push(interaction.member.user.id); // add user.id to args
+		args.push(interaction.channel_id); // add channel_id to args
 
 		var data = JSON.stringify(args);
 		// console.info(data);
@@ -32,7 +31,20 @@ module.exports = {
 		axios(config)
 			.then(function(response) {})
 			.catch(function(error) {
-				// console.log(error);
+				console.log(error);
 			});
+    
+     	await say(interaction, "Posted 🎉");
+
+
+    
 	},
+	// async execute(bot, say, interaction, args) {
+	// 	const embed = new MessageEmbed()
+	// 		.setDescription(args[0].value)
+	// 		.setColor("RANDOM")
+	// 		.setTimestamp()
+	// 		.setFooter(bot.user.username);
+	// 	await say(interaction, embed);
+	// },
 };

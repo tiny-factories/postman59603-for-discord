@@ -7,7 +7,19 @@ module.exports = {
 	options: [
 		{
 			name: "Post",
-			description: "Sends this post to tiny Garden's Public page",
+			description: "Share on: Twitter, TinyLetter, or Both",
+			type: 3,
+			required: true,
+		},
+     {
+			name: "When",
+			description: "anytime, soon, asap",
+			type: 3,
+			required: true,
+		},
+    {
+			name: "Share",
+			description: "share do you want to share?",
 			type: 3,
 			required: true,
 		},
