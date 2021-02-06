@@ -3,19 +3,24 @@ const qs = require("qs");
 
 module.exports = {
 	name: "post",
-	description: "Say command.",
+	description: "Sends post to external source",
 	options: [
 		{
-			name: "Post",
-			description: "Sends this post to tiny Garden's Public page",
+			name: "TinyGarden",
+			description: "Sends this post to the TinyGarden",
 			type: 3,
 			required: true,
 		},
 	],
 	async execute(_bot, say, interaction, args) {
-		console.info(args);
-		var data = JSON.stringify(args);
+		// console.info(interaction.member.user.id);
+		// console.info(interaction.channel_id);
 
+		args.push(interaction.member.user.id);
+		args.push(interaction.channel_id);
+
+		var data = JSON.stringify(args);
+		// console.info(data);
 		var config = {
 			method: "post",
 			url: "https://tiny-garden-server.glitch.me/api/post",
@@ -25,9 +30,9 @@ module.exports = {
 			data: data,
 		};
 		axios(config)
-			.then(function (response) {})
-			.catch(function (error) {
-				console.log(error);
+			.then(function(response) {})
+			.catch(function(error) {
+				// console.log(error);
 			});
 	},
 };
